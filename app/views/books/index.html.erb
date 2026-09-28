@@ -1,0 +1,21 @@
+<div class="mb-8 flex items-end justify-between gap-4">
+  <div>
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-400">Library</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-white">Books</h1>
+    <p class="mt-2 text-sm text-slate-400">A structured catalogue of your reading collection.</p>
+  </div>
+  <%= link_to "+ Add book", new_book_path, class: "rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400" %>
+</div>
+<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <% @books.each do |book| %>
+      <li>
+        <%= link_to book, class: "group flex min-h-40 flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-indigo-400/30 hover:bg-white/[0.07]" do %>
+          <span class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Book record</span>
+          <span class="mt-8 flex items-end justify-between gap-4">
+            <span class="text-lg font-semibold text-white"><%= book.title %></span>
+            <span class="text-xl text-slate-600 transition group-hover:translate-x-1 group-hover:text-indigo-300">→</span>
+          </span>
+        <% end %>
+      </li>
+    <% end %>
+</ul>

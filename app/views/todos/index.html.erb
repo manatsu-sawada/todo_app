@@ -1,18 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %><p class="mb-6 rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-300"><%= notice %></p><% end %>
 
 <% content_for :title do %>
   Todos
 <% end %>
 
-<h1>Todos</h1>
-
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
-  <% end %>
+<div class="mb-8 flex items-end justify-between gap-4">
+  <div>
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-400">Task manager</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-white">Todos</h1>
+    <p class="mt-2 text-sm text-slate-400">Track progress and keep the next action clear.</p>
+  </div>
+  <%= link_to "+ New todo", new_todo_path, class: "rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400" %>
 </div>
 
-<%= link_to "New todo", new_todo_path %>
+<div id="todos" class="grid gap-3">
+  <% @todos.each do |todo| %>
+    <%= link_to todo, class: "group rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:border-indigo-400/30 hover:bg-white/[0.07]" do %>
+      <%= render todo %>
+    <% end %>
+  <% end %>
+</div>

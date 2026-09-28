@@ -1,12 +1,9 @@
-<div id="<%= dom_id todo %>">
-  <div>
-    <strong>Title:</strong>
-    <%= todo.title %>
+<div id="<%= dom_id todo %>" class="flex items-center gap-4">
+  <span class="grid size-10 shrink-0 place-items-center rounded-xl <%= todo.completed? ? 'bg-emerald-400/10 text-emerald-300' : 'bg-amber-400/10 text-amber-300' %>">
+    <%= todo.completed? ? "✓" : "·" %>
+  </span>
+  <div class="min-w-0 flex-1">
+    <p class="truncate font-semibold text-white <%= 'line-through opacity-60' if todo.completed? %>"><%= todo.title %></p>
+    <p class="mt-1 text-xs font-medium uppercase tracking-wider <%= todo.completed? ? 'text-emerald-400' : 'text-amber-400' %>"><%= todo.completed? ? "Completed" : "In progress" %></p>
   </div>
-
-  <div>
-    <strong>Completed:</strong>
-    <%= todo.completed %>
-  </div>
-
 </div>

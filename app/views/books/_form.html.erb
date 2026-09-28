@@ -1,0 +1,19 @@
+<%= form_with model: book, class: "space-y-6" do |form| %>
+  <div>
+    <%= form.label :title, class: "mb-2 block text-sm font-medium text-slate-300" %>
+    <%= form.text_field :title, class: "w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-400/10", placeholder: "Book title" %>
+    <% @book.errors.full_messages_for(:title).each do |message| %>
+        <p class="mt-2 text-sm text-rose-300"><%= message %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :author, class: "mb-2 block text-sm font-medium text-slate-300" %>
+    <%= form.text_field :author, class: "w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-400/10", placeholder: "Author name" %>
+    <% @book.errors.full_messages_for(:author).each do |message| %>
+        <p class="mt-2 text-sm text-rose-300"><%= message %></p>
+    <% end %>
+  </div>
+  <div class="flex justify-end">
+    <%= form.submit class: "cursor-pointer rounded-xl bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400" %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="mx-auto max-w-2xl">
+  <%= link_to "← Back to books", books_path, class: "text-sm font-medium text-indigo-300 hover:text-indigo-200" %>
+  <div class="mt-6 rounded-3xl border border-white/10 bg-white/[0.04] p-8">
+    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-400">New record</p>
+    <h1 class="mb-8 mt-2 text-3xl font-bold tracking-tight text-white">Add a book</h1>
+    <%= render "form", book: @book %>
+  </div>
+</div>

@@ -1,9 +1,9 @@
-<%= form_with(model: todo) do |form| %>
+<%= form_with(model: todo, class: "space-y-6") do |form| %>
   <% if todo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+    <div class="rounded-xl border border-rose-400/20 bg-rose-400/10 p-4 text-sm text-rose-200">
+      <h2 class="font-semibold"><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
-      <ul>
+      <ul class="mt-2 list-inside list-disc text-rose-300">
         <% todo.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -12,16 +12,17 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "mb-2 block text-sm font-medium text-slate-300" %>
+    <%= form.text_field :title, class: "w-full rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-400/10", placeholder: "What needs to be done?" %>
   </div>
 
-  <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.checkbox :completed %>
+  <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
+    <%= form.checkbox :completed, class: "size-4 rounded border-white/20 bg-slate-900 text-indigo-500 focus:ring-indigo-400" %>
+    <span class="text-sm font-medium text-slate-300">Mark as completed</span>
+  </label>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex justify-end">
+    <%= form.submit class: "cursor-pointer rounded-xl bg-indigo-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition hover:bg-indigo-400" %>
   </div>
 <% end %>

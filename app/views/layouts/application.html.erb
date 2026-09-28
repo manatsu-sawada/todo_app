@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Todo App" %></title>
+    <title><%= content_for(:title) || "Book shelf" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Todo App">
+    <meta name="application-name" content="Book shelf">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,12 +18,33 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.10),transparent_28%)]"></div>
+
+    <header class="relative border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <%= link_to root_path, class: "group flex items-center gap-3" do %>
+          <span class="grid size-9 place-items-center rounded-xl bg-indigo-500 font-black text-white shadow-lg shadow-indigo-500/25 transition group-hover:bg-indigo-400">B</span>
+          <span>
+            <span class="block text-sm font-semibold tracking-wide text-white">BOOK SHELF</span>
+            <span class="block text-[10px] font-medium uppercase tracking-[0.24em] text-slate-500">Workspace</span>
+          </span>
+        <% end %>
+
+        <nav class="flex items-center gap-1 rounded-xl border border-white/10 bg-white/5 p-1 text-sm">
+          <%= link_to "Home", root_path, class: "rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" %>
+          <%= link_to "Todos", todos_path, class: "rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" %>
+          <%= link_to "Books", books_path, class: "rounded-lg px-3 py-2 text-slate-300 transition hover:bg-white/10 hover:text-white" %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="relative mx-auto w-full max-w-6xl px-6 py-12">
+      <%= yield %>
+    </main>
   </body>
 </html>
