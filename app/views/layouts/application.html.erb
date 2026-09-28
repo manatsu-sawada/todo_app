@@ -44,6 +44,16 @@
     </header>
 
     <main class="relative mx-auto w-full max-w-6xl px-6 py-12">
+
+<%# ログイン時通知 %>
+    <% if notice.present? %>
+      <p><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+      <p><%= alert %></p>
+    <% end %>
+
       <%= yield %>
     </main>
   </body>
