@@ -65,7 +65,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "json", "~> 2.0"
+gem "json", "~> 3.0"
 gem "tailwindcss-rails", "~> 4.6"
 
 gem "devise", "~> 5.0"
